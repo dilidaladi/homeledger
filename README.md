@@ -1,4 +1,4 @@
-# 📒 家账簿 HomeLedger
+# 📒 家庭账簿 HomeLedger
 
 **自托管的家庭记账系统**：网页手动记账 + AI 截图/文本自动记账 + 开放 API 对接聊天机器人，所有账目数据都留在你自己的 NAS / 服务器上。
 
@@ -219,13 +219,13 @@ curl -s "$BASE_URL/models" -H "Authorization: Bearer $API_KEY"
 
 ## 四、开放 API：小龙虾（OpenClaw）自动记账
 
-想**在飞书 / 企业微信 / Telegram 里直接发截图或说一句话就记账**？给飞牛上的小龙虾配一个技能即可，家账簿已内置配套的开放 API。
+想**在飞书 / 企业微信 / Telegram 里直接发截图或说一句话就记账**？给飞牛上的小龙虾配一个技能即可，家庭账簿已内置配套的开放 API。
 
-**① 生成令牌**：家账簿「设置 → 开放 API」→ 生成新令牌（明文只展示一次）。
+**① 生成令牌**：家庭账簿「设置 → 开放 API」→ 生成新令牌（明文只展示一次）。
 
 **② 安装技能**：把 `openclaw-skill/homeledger-bookkeeping/` 整个目录放进小龙虾的技能目录（或在技能页导入），并在技能配置里填：
 
-- `HOMELEDGER_URL`：家账簿地址，如 `http://<NAS_IP>:5111`
+- `HOMELEDGER_URL`：家庭账簿地址，如 `http://<NAS_IP>:5111`
 - `HOMELEDGER_TOKEN`：第①步生成的令牌
 
 **③ 开聊天**：发一张支付截图说"记一下"，或直接说"午饭 35 元"，小龙虾会调 API 自动记账并汇报。
@@ -261,7 +261,7 @@ curl -s "$BASE_URL/models" -H "Authorization: Bearer $API_KEY"
 
 1. 下载 `.fpk`（见 GitHub Releases，或自行打包：`bash packaging/fpk/build-fpk.sh`）
 2. 飞牛桌面 → **应用中心** → 右上角 **设置** → **手动安装应用** → 选择 `.fpk`
-3. 安装后桌面出现「家账簿」图标，点击在浏览器打开，默认端口 **5111**
+3. 安装后桌面出现「家庭账簿」图标，点击在浏览器打开，默认端口 **5111**
 4. 账本数据存放在飞牛托管的应用数据目录（`TRIM_PKGVAR/data`），**升级/覆盖安装不丢数据**；只有卸载（且勾选「清除本地数据」）才会删除 —— 升级请**直接覆盖安装，不要先卸载**
 
 打包细节见 `packaging/fpk/README.md`。

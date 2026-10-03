@@ -1,6 +1,6 @@
 'use strict';
 /**
- * 家账簿 HomeLedger —— 服务端入口
+ * 家庭账簿 HomeLedger —— 服务端入口
  * 纯后端：Express + EJS 服务端渲染 + SQLite，零前端框架、零原生依赖
  */
 const path = require('node:path');
@@ -114,7 +114,7 @@ app.use((req, res, next) => {
   res.locals.ROLE_LABEL = auth.ROLE_LABEL;
   res.locals.canWrite = auth.canWrite;
   res.locals.canManage = auth.canManage;
-  res.locals.siteName = db.getSetting('site.name', '家账簿');
+  res.locals.siteName = db.getSetting('site.name', '家庭账簿');
   res.locals.baseCurrency = db.getSetting('site.currency', 'CNY');
   res.locals.today = db.todayStr();
   res.locals.now = db.nowStr();
@@ -202,7 +202,7 @@ app.use((err, req, res, _next) => {
 /* ---------------------------------- 启动 ---------------------------------- */
 
 const server = app.listen(PORT, HOST, () => {
-  const name = db.getSetting('site.name', '家账簿');
+  const name = db.getSetting('site.name', '家庭账簿');
   console.log('');
   console.log(`  📒 ${name} 已启动`);
   console.log(`     本机访问：http://localhost:${PORT}`);

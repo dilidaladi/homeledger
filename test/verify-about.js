@@ -65,7 +65,7 @@ const csrfOf = (html) => (html.match(/name="_csrf"\s+value="([^"]+)"/) || [])[1]
   r = await req('GET', '/about', { cookie });
   check('关于页可访问', r.status === 200, `HTTP ${r.status}`);
   check('显示当前版本号 v1.0.0', r.text.includes('v1.0.0'));
-  check('产品介绍渲染', r.text.includes('家账簿 HomeLedger') && r.text.includes('自托管'));
+  check('产品介绍渲染', r.text.includes('家庭账簿 HomeLedger') && r.text.includes('自托管'));
   check('功能亮点卡片渲染（6 个）', (r.text.match(/about-feature"/g) || []).length === 6, String((r.text.match(/about-feature"/g) || []).length));
   check('版本日志渲染（含 1.0.0 首发）', r.text.includes('版本日志') && r.text.includes('v1.0.0') && r.text.includes('首个公开发布版本'));
   check('统计卡渲染（记录笔数/陪伴天数）', r.text.includes('记录笔数') && r.text.includes('陪伴天数'));

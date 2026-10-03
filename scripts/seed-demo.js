@@ -30,7 +30,7 @@ function main() {
   const uid = Number(info.lastInsertRowid);
   const ledgerId = Number(db.createDefaultLedger(uid, '小夏'));
   db.run('UPDATE ledgers SET name = ? WHERE id = ?', '家的账本', ledgerId);
-  db.setSetting('site.name', '家账簿');
+  db.setSetting('site.name', '家庭账簿');
   db.setSetting('ai.enabled', 'true');
   db.setSetting('ai.auto_save', 'true');
   db.setSetting('ai.api_key', 'sk-demo-key-0000000000000000');

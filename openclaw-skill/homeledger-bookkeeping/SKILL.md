@@ -1,14 +1,14 @@
 ---
 name: homeledger-bookkeeping
-description: 家账簿（HomeLedger）自动记账。当用户发送账单截图、支付记录截图或口述消费（如"午饭花了 35"）时，调用家账簿开放 API 自动记账并汇报结果。
+description: 家庭账簿（HomeLedger）自动记账。当用户发送账单截图、支付记录截图或口述消费（如"午饭花了 35"）时，调用家庭账簿开放 API 自动记账并汇报结果。
 ---
 
-# 家账簿自动记账技能
+# 家庭账簿自动记账技能
 
 ## 前置配置（技能环境变量或对话中告知）
 
-- `HOMELEDGER_URL`：家账簿地址，例如 `http://<NAS_IP>:5111`（NAS 局域网内可达）
-- `HOMELEDGER_TOKEN`：API 令牌，在家账簿「设置 → 开放 API」中生成（`hl_` 开头）
+- `HOMELEDGER_URL`：家庭账簿地址，例如 `http://<NAS_IP>:5111`（NAS 局域网内可达）
+- `HOMELEDGER_TOKEN`：API 令牌，在家庭账簿「设置 → 开放 API」中生成（`hl_` 开头）
 
 两个变量缺一个时，先向用户询问，不要猜。
 
@@ -29,7 +29,7 @@ curl -sS -X POST "$HOMELEDGER_URL/api/open/ai/bill" \
   把返回的 `drafts`（每笔含 `type/txn_date/amount_cents/merchant/note`）列给用户确认后再以 `confirm: true` 重发。
 - 返回 `ok: true` 时，用 `created`（笔数）和 `warnings` 向用户汇报；`errors` 非空要如实转述。
 
-**截图会自动存档**：`confirm: true` 入库时，家账簿会把本次图片一并保存到账本附件库，
+**截图会自动存档**：`confirm: true` 入库时，家庭账簿会把本次图片一并保存到账本附件库，
 并关联到这批记录上（一图一笔则一一对应，否则整组图挂在第一笔）。
 响应里的 `images` 给出对应关系：
 
@@ -39,9 +39,9 @@ curl -sS -X POST "$HOMELEDGER_URL/api/open/ai/bill" \
 ```
 
 - 想让 `confirm: false` 的草稿调用也留档，加 `"save_images": true`（默认不留档，避免试探性调用堆积无用图片）。
-- 在聊天里回执时可以附原图：把 `path` 拼到家账簿地址后面即可，如
+- 在聊天里回执时可以附原图：把 `path` 拼到家庭账簿地址后面即可，如
   `http://<NAS_IP>:5111/uploads/202609/1730f3a2.png`；
-  或用带令牌的接口取回（适合家账簿不对外直连的场景）：
+  或用带令牌的接口取回（适合家庭账簿不对外直连的场景）：
   `GET $HOMELEDGER_URL/api/open/attachments/7` + `Authorization: Bearer $HOMELEDGER_TOKEN`。
 
 ### 2. 用户口述消费 / 粘贴账单文字
@@ -64,7 +64,7 @@ curl -sS -X POST "$HOMELEDGER_URL/api/open/transactions" \
   -d '{"type":"expense","amount":35,"category":"餐饮","account":"微信零钱","merchant":"面馆","note":"午饭","date":"2026-09-15"}'
 ```
 
-**注意**：若家账簿尚未配置 AI 模型，`/ai/bill` 会退回内置规则引擎——它只能把整段文字解析成**一笔**记录，多笔口述（如"午饭 35 打车 26.5"）会丢账。此时应：
+**注意**：若家庭账簿尚未配置 AI 模型，`/ai/bill` 会退回内置规则引擎——它只能把整段文字解析成**一笔**记录，多笔口述（如"午饭 35 打车 26.5"）会丢账。此时应：
 - 把多笔文本**拆成多条**，逐条走 `/transactions` 直记；或
 - 在响应 `warnings` 提示下，引导用户到「设置 → AI 记账」配置视觉模型后再用截图/整段识别。
 
@@ -102,5 +102,5 @@ curl -sS "$HOMELEDGER_URL/api/open/transactions/recent?limit=10" -H "Authorizati
 | `当前模型未开启视觉能力，无法读取截图内容` | 设置页「模型支持图片（视觉）」没勾 | 勾选后保存 |
 | `尚未配置 AI 模型…` | 没配模型 | 填接口地址与 API Key → 点「获取可用模型」选一个 → 点「测试连接」 |
 
-**「获取可用模型」**在家账簿「设置 → AI 记账」的模型名称旁边：读取该接口的模型清单，
+**「获取可用模型」**在家庭账簿「设置 → AI 记账」的模型名称旁边：读取该接口的模型清单，
 能读图的标 ✅，选中即自动填入并联动勾选视觉开关。模型名也可以手动填写，不限于清单。

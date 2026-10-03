@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""家账簿 → 飞牛 fnOS .fpk 打包（Python 实现，显式控制 Unix 权限位）
+"""家庭账簿 → 飞牛 fnOS .fpk 打包（Python 实现，显式控制 Unix 权限位）
 
 用法: python make-fpk.py <源码目录> <输出.fpk> [版本号] [--work <工作目录>]
 依赖: Node 运行时二进制需已放在 <工作目录>/app/runtime/node
@@ -68,7 +68,7 @@ CALLBACK_STUBS = {
 
 MANIFEST_TMPL = """appname               = homeledger
 version               = {version}
-display_name          = 家账簿
+display_name          = 家庭账簿
 desc                  = 纯后端家庭记账网站：账号密码登录，支持支出/收入/转账/借贷/投资/报销/退款等全类型记账；AI 截图/文本自动记账（支持 OpenAI 兼容接口与规则兜底）；支付宝/微信账单导入；多人共享账本、预算、周期账单、储蓄目标、报表图表；开放 API 可对接小龙虾等自动化工具。数据全部存储在本机 SQLite，不上传云端。
 platform              = x86
 source                = thirdparty
@@ -188,7 +188,7 @@ def main():
             f.write('''{
     ".url": {
         "homeledger.Application": {
-            "title": "家账簿",
+            "title": "家庭账簿",
             "icon": "images/icon_{0}.png",
             "type": "iframe",
             "protocol": "http",

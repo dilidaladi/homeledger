@@ -1,5 +1,5 @@
 #!/bin/bash
-# 家账簿 → 飞牛 fnOS .fpk 打包脚本
+# 家庭账簿 → 飞牛 fnOS .fpk 打包脚本
 # 用法: ./build-fpk.sh [版本号]   (默认读 package.json 的 version)
 # 依赖: bash + curl + tar + fnpack 官方打包工具
 #       下载: https://developer.fnnas.com/docs/cli/fnpack/
@@ -40,7 +40,7 @@ echo "==> 4/5 写入打包配置"
 cat > "${FPK_DIR}/manifest" <<EOF
 appname               = homeledger
 version               = ${VERSION}
-display_name          = 家账簿
+display_name          = 家庭账簿
 desc                  = 纯后端家庭记账网站：账号密码登录，支持支出/收入/转账/借贷/投资/报销/退款等全类型记账；AI 截图/文本自动记账（支持 OpenAI 兼容接口与规则兜底）；支付宝/微信账单导入；多人共享账本、预算、周期账单、储蓄目标、报表图表；开放 API 可对接小龙虾等自动化工具。数据全部存储在本机 SQLite，不上传云端。
 platform              = x86
 source                = thirdparty
@@ -85,7 +85,7 @@ cat > "${FPK_DIR}/app/ui/config" <<'EOF'
 {
     ".url": {
         "homeledger.Application": {
-            "title": "家账簿",
+            "title": "家庭账簿",
             "icon": "images/icon_{0}.png",
             "type": "url",
             "protocol": "http",

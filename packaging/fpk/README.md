@@ -1,6 +1,6 @@
 # 飞牛 fnOS 应用打包（.fpk）
 
-把家账簿打包为飞牛 fnOS 应用中心的 `.fpk` 安装包（**原生应用**，非 Docker：内置 Node.js 运行时，无需注册表/镜像仓库）。
+把家庭账簿打包为飞牛 fnOS 应用中心的 `.fpk` 安装包（**原生应用**，非 Docker：内置 Node.js 运行时，无需注册表/镜像仓库）。
 
 ## 前置条件
 
@@ -45,7 +45,7 @@ python packaging/fpk/make-fpk.py . dist/homeledger-<版本>.fpk ../fpk-work
 
 1. `.fpk` 上传到 NAS 任意目录
 2. 飞牛桌面 → **应用中心** → 右上角 **设置** → **手动安装应用** → 选择 `.fpk`
-3. 桌面出现「家账簿」图标，浏览器打开，端口 **5111**
+3. 桌面出现「家庭账簿」图标，浏览器打开，端口 **5111**
 
 ## 包内结构
 
@@ -100,6 +100,6 @@ wizard/               安装向导（空）
 | `iframe` | 飞牛桌面内嵌窗口打开（v1.1.1 默认） | 桌面体验一致，不跳浏览器 |
 
 注意：
-- iframe 模式要求应用**不发送** `X-Frame-Options` / CSP `frame-ancestors` 响应头，否则内嵌空白。家账簿未设置这些头，天然支持；若以后引入 helmet 之类中间件需关掉 frameguard。
+- iframe 模式要求应用**不发送** `X-Frame-Options` / CSP `frame-ancestors` 响应头，否则内嵌空白。家庭账簿未设置这些头，天然支持；若以后引入 helmet 之类中间件需关掉 frameguard。
 - 两种模式 URL 拼接都是 `{protocol}://{桌面地址的 hostname}:{port}{url}`，改了 `protocol`/`port` 要同步 manifest 的 `service_port`。
 - 改动只涉及 `ui/config`，服务端代码无需变更；重打包仍走上面的 make-fpk.py 流程。

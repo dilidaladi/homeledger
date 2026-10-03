@@ -492,7 +492,7 @@ const INCOME_SEED = [
 /* ---------------------------------- 系统设置 -------------------------------- */
 
 const DEFAULT_SETTINGS = {
-  'site.name': '家账簿',
+  'site.name': '家庭账簿',
   'site.currency': 'CNY',
   'site.allow_register': (process.env.ALLOW_REGISTER || 'true') === 'true' ? 'true' : 'false',
   'ai.enabled': 'false',

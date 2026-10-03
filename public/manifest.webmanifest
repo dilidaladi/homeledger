@@ -1,6 +1,6 @@
 {
-  "name": "家账簿 HomeLedger",
-  "short_name": "家账簿",
+  "name": "家庭账簿 HomeLedger",
+  "short_name": "家庭账簿",
   "description": "自托管的家庭记账系统，支持截图 AI 自动记账",
   "start_url": "/",
   "display": "standalone",

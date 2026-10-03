@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 /**
- * 家账簿 · 用户密码重置工具（忘记密码时使用）
+ * 家庭账簿 · 用户密码重置工具（忘记密码时使用）
  *
  * 用法:
  *   DATA_DIR=<应用数据目录> node scripts/reset-password.js <用户名> <新密码>

@@ -10,7 +10,7 @@
 const GITHUB_REPO = 'https://github.com/sucraft-hub/homeledger';
 
 const APP = {
-  name: '家账簿 HomeLedger',
+  name: '家庭账簿 HomeLedger',
   slogan: '为家庭打造的轻量自托管记账系统',
   description:
     '纯后端 SSR 架构，数据 100% 存放在你自己的 NAS / 服务器上。' +
